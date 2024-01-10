@@ -8,13 +8,6 @@ jobs:
       - name: Check out branch source
         uses: actions/checkout@v4
 
-      - name: Make a new crate
-        run: |
-          pwd
-          cargo new autofmt_demo
-          ls
-          head -n 1000 autofmt_demo/Cargo.toml autofmt_demo/src/main.rs
-        
       - name: Install rustfmt from nightly toolchain
         run: |
           rustup toolchain install nightly
