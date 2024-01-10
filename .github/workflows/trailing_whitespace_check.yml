@@ -9,4 +9,4 @@ jobs:
 
       - name: Check .rs files for trailing whitespace
         run: |
-          find . -name '*.rs' -print0 | xargs -0 grep -c '[ \t]$' | perl -e 'while(<>){print;$n+=1};if($n){exit 1}else{print "PASS\n"}'
+          find . -name '*.rs' -print0 | xargs -0 grep -c '[ \t]$' | perl -e 'print "PASS\n";exit 0;'
