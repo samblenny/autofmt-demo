@@ -10,8 +10,10 @@ jobs:
 
       - name: Make a new crate
         run: |
+          pwd
           cargo new autofmt_demo
-          head -n 1000 Cargo.toml src/main.rs
+          ls
+          head -n 1000 autofmt_demo/Cargo.toml autofmt_demo/src/main.rs
         
       - name: Install rustfmt from nightly toolchain
         run: |
