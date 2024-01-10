@@ -7,15 +7,11 @@ jobs:
     steps:
       - name: Check out branch source
         uses: actions/checkout@v4
-        
-      - name: Install nightly rustfmt
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: nightly
-          override: true
-          components: rustfmt
 
-      - run: rustfmt --help
-      - run: rustup toolchain list
+      - name: Check for installed rust tools
+        run: |
+          rustup --version
+          rustup toolchain list
+          rustfmt --help
+
       - run: echo "status = ${{ job.status }}"
