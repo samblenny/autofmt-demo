@@ -1,6 +1,5 @@
 name: rustfmt_check
-on:
-  workflow_dispatch:
+on: push
 jobs:
   rustfmt_check:
     runs-on: ubuntu-latest
