@@ -1,6 +1,5 @@
 name: rustfmt_check
-on:
-  workflow_dispatch:
+on: [push, pull_request]
 jobs:
   rustfmt_check:
     runs-on: ubuntu-latest
@@ -11,11 +10,9 @@ jobs:
       - name: Install rustfmt from nightly toolchain
         run: |
           rustup toolchain install nightly
-          rustup default nightly
-          rustup component add rustfmt
-          rustfmt --version
+          rustup component add rustfmt --toolchain nightly
 
-      - name: Run cargo fmt -- --check
-        run: cargo fmt -- --check
+      - name: Run cargo +nightly fmt --check
+        run: cargo +nightly fmt --check
 
       - run: echo "status = ${{ job.status }}"
