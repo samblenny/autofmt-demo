@@ -12,6 +12,15 @@ jobs:
         run: |
           rustup --version
           rustup toolchain list
-          rustfmt --help
+
+      - name: Get nightly toolchain and set it as default
+        run: |
+          rustup toolchain install nightly
+          rustup default nightly
+
+      - name: Check rust tool versions
+        run: |
+          rustup toolchain list
+          rustfmt --version
 
       - run: echo "status = ${{ job.status }}"
