@@ -9,4 +9,4 @@ jobs:
 
       - name: Check .rs files for trailing whitespace
         run: >
-          find --help
+          find . -name '*.rs'
