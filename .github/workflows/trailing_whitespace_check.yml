@@ -8,6 +8,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check .rs files for trailing whitespace
-        run: |
-          find . -name '*.rs' -print0 | xargs -0 grep -c '[ \t]$' | \
-          grep -v ':0$' | perl -e 'while(<>){print;$n+=1};exit ($n>0)?0:1;'
+        run: >
+          find . -name '*.rs' -print0 |
+          xargs -0 grep -c '[ \t]$' |
+          grep -v ':0$' |
+          perl -e 'while(<>){print;$n+=1};exit ($n>0)?0:1;'
