@@ -8,22 +8,14 @@ jobs:
       - name: Check out branch source
         uses: actions/checkout@v4
 
-      - name: Check for pre-installed rustup
-        run: |
-          rustup --version
-          rustup toolchain list
-
       - name: Install rustfmt from nightly toolchain
         run: |
           rustup toolchain install nightly
           rustup default nightly
           rustup component add rustfmt
-
-      - name: Check rustfmt version
-        run: |
           rustfmt --version
 
-      - name: Run rustfmt
-        run: rustfmt --check
+      - name: Run cargo fmt -- --check
+        run: cargo fmt -- --check
 
       - run: echo "status = ${{ job.status }}"
