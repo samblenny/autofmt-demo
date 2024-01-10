@@ -11,4 +11,4 @@ jobs:
         run: >
           find . -name '*.rs' -print0 | xargs -0 grep -c '[ \t]$'
           | grep -v ':0$'
-          | perl -e 'while(<>){print;$n+=1};if($n>0){print "FAIL $n\n";exit 1;};print "PASS $n\n";exit 0;'
+          | perl -e 'use 5.010;while(<>){print;$n+=1};if($n>0){print "FAIL $n\n";exit 1;};print "PASS $n\n";exit 0;'
