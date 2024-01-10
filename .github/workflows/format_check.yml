@@ -17,6 +17,7 @@ jobs:
         run: |
           rustup toolchain install nightly
           rustup default nightly
+          rustup component add rustfmt
 
       - name: Check rust tool versions
         run: |
