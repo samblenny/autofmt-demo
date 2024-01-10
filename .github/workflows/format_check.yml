@@ -5,6 +5,9 @@ jobs:
   check-code-format:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out branch source
+        uses: actions/checkout@v4
+        
       - run: git branch -v
       - run: pwd
       - run: ls
