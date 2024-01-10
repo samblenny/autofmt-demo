@@ -8,7 +8,14 @@ jobs:
       - name: Check out branch source
         uses: actions/checkout@v4
         
-      - run: git branch -v
-      - run: pwd
-      - run: ls
+      - name: Install nightly rustfmt
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+          override: true
+          components: rustfmt
+
+      - run: rustfmt --help
+      - run: rustup toolchain list
       - run: echo "status = ${{ job.status }}"
