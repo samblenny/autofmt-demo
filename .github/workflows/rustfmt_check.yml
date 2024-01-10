@@ -1,5 +1,5 @@
 name: rustfmt_check
-on: push
+on: [push, pull_request]
 jobs:
   rustfmt_check:
     runs-on: ubuntu-latest
