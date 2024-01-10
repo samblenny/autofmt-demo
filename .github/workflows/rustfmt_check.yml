@@ -1,27 +1,29 @@
-name: PR Code Format Check
+name: rustfmt_check
 on:
   workflow_dispatch:
 jobs:
-  check-code-format:
+  rustfmt_check:
     runs-on: ubuntu-latest
     steps:
       - name: Check out branch source
         uses: actions/checkout@v4
 
-      - name: Check for installed rust tools
+      - name: Check for pre-installed rustup
         run: |
           rustup --version
           rustup toolchain list
 
-      - name: Get nightly toolchain and set it as default
+      - name: Install rustfmt from nightly toolchain
         run: |
           rustup toolchain install nightly
           rustup default nightly
           rustup component add rustfmt
 
-      - name: Check rust tool versions
+      - name: Check rustfmt version
         run: |
-          rustup toolchain list
           rustfmt --version
+
+      - name: Run rustfmt
+        run: rustfmt --check
 
       - run: echo "status = ${{ job.status }}"
